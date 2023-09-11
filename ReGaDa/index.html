@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <title>ReGaDa</title>
+</head>
+
+<body>
+  <div class="container">
+    <br>
+    <div style="text-align: center;">  
+      <h1>ReGaDa</h1>
+      <h2> Adverb-video retrieval with compositional adverb-action embeddings</h2 >
+      <div style="margin-top: 15px;">
+        <span style="margin-right: 15px; font-size: 1.3em;"><a href="https://hummelth.github.io/" target="_blank">Thomas Hummel<sup>1</sup></a></span>
+        <span style="margin-right: 15px; font-size: 1.3em;"><a href="https://merceaotniel.github.io/" target="_blank">Otniel-Bogdan Mercea<sup>1</sup></a></span>
+        <span style="margin-right: 15px; font-size: 1.3em;"><a href="https://akoepke.github.io/" target="_blank">A. Sophia Koepke<sup>1</sup></a></span>
+        <span style="margin-right: 15px; font-size: 1.3em;"><a href="https://www.eml-unitue.de/" target="_blank">Zeynep Akata<sup>1,2</sup></a></span>
+      </div>
+      <div style="margin-top: 15px;">
+        
+        <span style="margin-right: 20px; font-size: 1.2em;"><sup>1</sup>University of Tübingen</span>
+        <span style="font-size: 1.2em;"><sup>2</sup>Max Planck Institute for Intelligent
+            Systems</span>
+      </div>
+      <div>
+        <span style="margin-right: 10px; font-size: 1.3em;">BMVC 2023</span>
+      </div>
+    </div>
+    <div class="text-center" style="font-size: 1.5em; margin-top: 25px;">
+      <a class="btn btn-primary btn-lg" target="_blank"
+        href="https://arxiv.org/" role="button"
+        style="margin-right: 10px;  margin-bottom: 10px;">Paper</a>
+      <a class="btn btn-primary btn-lg" target="_blank"
+        href="https://github.com/ExplainableML/ReGaDa" role="button"
+        style="margin-bottom: 10px;">Code</a>
+    </div>
+    <div style="margin-top: 30px;">
+      <h2 class="text-center">
+        Abstract
+      </h2>
+      <p style="font-style: italic; margin-bottom: 5px;">
+        Retrieving adverbs that describe an action in a video poses a crucial step towards fine-grained video understanding.
+        We propose a framework for video-to-adverb retrieval (and vice versa) that aligns video embeddings with their matching compositional adverb-action text embedding in a joint embedding space. The compositional adverb-action text embedding is learned using a residual gating mechanism, along with a novel training objective consisting of triplet losses and a regression target.
+        Our method achieves state-of-the-art performance on five recent benchmarks for video-to-adverb retrieval. Furthermore, we introduce dataset splits to benchmark the adverb-video retrieval for unseen adverb-action compositions on subsets of the MSR-VTT Adverbs and ActivityNet Adverbs datasets. 
+        Our proposed framework outperforms all prior works for the generalisation task of retrieving adverbs from videos for unseen adverb-action compositions.
+        Code and dataset splits are available at <a href="https://github.com/ExplainableML/ReGaDa">https://github.com/ExplainableML/ReGaDa</a>.
+      </p>
+    </div>
+    <div style="margin-top:50px;">
+      <h2 class="text-center">
+        Qualitative Examples
+      </h2>
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6 gallery">
+          <div class="text-center">
+            <h4>Video 1 </h4>
+            <p align="center">       
+              <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/1f2xbj-yqhR-iY8-lFpwWAY5Kq3vk6tjC/preview" 
+                allowfullscreen></iframe>
+            </div>
+              <center>
+                Ground truth: <b>"crawl forwards"</b> &emsp; Ours: "crawl forwards" &emsp; \(AC_{reg}\): "crawl backwards"
+            </center>
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 gallery">
+          <div class="text-center">
+            <h4>Video 2 </h4>
+            <p align="center">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/16QlTS6J_2xiA-RRFNkgqvXvi1wjwheMB/preview" 
+                  allowfullscreen></iframe>
+              </div>
+              <center>
+                Ground truth: <b>"drive gradually"</b> &emsp; Ours: "drive gradually" &emsp; \(AC_{reg}\): "drive instantly"
+            </center>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6 gallery">
+          <div class="text-center">
+            <h4>Video 3 </h4>
+            <p align="center">       
+              <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/1dQO99I24MFQ2tIaJXT9v-OIdVB3DtGaD/preview" 
+                allowfullscreen></iframe>
+            </div>
+              <center>
+                Ground truth: <b>"bend backwards"</b> &emsp; Ours: "bend forwards" &emsp; \(AC_{reg}\): "bend backwards"
+            </center>
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 gallery">
+          <div class="text-center">
+            <h4>Video 4 </h4>
+            <p align="center">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/1MnTTYqR7c2i9ugMlJ68iKq6u1luNuOXx/preview" 
+                  allowfullscreen></iframe>
+              </div>
+              <center>
+                Ground truth: <b>"fly upwards"</b> &emsp; Ours: "fly upwards" &emsp; \(AC_{reg}\): "fly downwards"
+            </center>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+          <div class="text-center">
+            <h4>Video 5 </h4>
+            <p align="center">       
+              <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/16gAbQlyhXXz8657u17S1j-E9pHSAE_Lp/preview" 
+                allowfullscreen></iframe>
+            </div>
+              <center>
+                Ground truth: <b>"fold quickly"</b> &emsp; Ours: "fold slowly" &emsp; \(AC_{reg}\): "fold quickly"
+            </center>
+            </p>
+          </div>
+      </div>
+      <div>
+
+    </div>
+    </div>
+    
+
+    <div style="margin-top:50px;">
+    
+      <div>
+        <h2 class="text-center" style="margin-top: 30px;">
+          Citation
+        </h2>
+        <p>
+          If you want to cite our work, please use:
+        </p>
+        <pre>tbd</pre>
+      </div>
+
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
