@@ -25,7 +25,7 @@ def get_author_dict():
         'Dominik Heider': 'https://heiderlab.de/',
         }
 
-def generate_person_html(persons, connection=", ", make_bold=True, make_bold_name='Thomas Hummel', add_links=True):
+def generate_person_html(persons, connection=", ", make_bold=True, make_bold_name='Thomas Hummel', add_links=True, indicate_equal=True):
     links = get_author_dict() if add_links else {}
     s = ""
     for p in persons:
@@ -34,10 +34,18 @@ def generate_person_html(persons, connection=", ", make_bold=True, make_bold_nam
             if string_part_i != "":
                 string_part_i += " "
             string_part_i += name_part_i
+        # is equal?
+        is_equal = "*" in string_part_i
+        equal_string = ""
+        if is_equal and indicate_equal:
+            # remove * from author strings
+            equal_string = "*"
+        string_part_i = string_part_i.replace("*", "")
+
         if string_part_i in links.keys():
-            string_part_i = f'<a href="{links[string_part_i]}" target="_blank">{string_part_i}</a>'
+            string_part_i = f'<a href="{links[string_part_i]}" target="_blank">{string_part_i}{equal_string}</a>'
         if make_bold and string_part_i == make_bold_name:
-            string_part_i = f'<span style="font-weight: bold";>{make_bold_name}</span>'
+            string_part_i = f'<span style="font-weight: bold";>{make_bold_name}{equal_string}</span>'
         if p != persons[-1]:
             string_part_i += connection
         s += string_part_i
@@ -55,6 +63,10 @@ def get_paper_entry(entry_key, entry):
 
     s += f"""{generate_person_html(entry.persons['author'])} <br>"""
     s += f"""<span style="font-style: italic;">{entry.fields['booktitle']}</span>, {entry.fields['year']} <br>"""
+    is_any_equal_contribution = any(["*" in str(p) for p in entry.persons['author']])
+    if is_any_equal_contribution:
+        s += f"""* equal contribution <br>"""
+
 
     artefacts = {'html': 'Project Page', 'pdf': 'Paper', 'supp': 'Supplemental', 'video': 'Video', 'poster': 'Poster', 'code': 'Code'}
     i = 0
@@ -68,7 +80,7 @@ def get_paper_entry(entry_key, entry):
             print(f'[{entry_key}] Warning: Field {k} missing!')
 
     cite = "<pre><code>@InProceedings{" + f"{entry_key}, \n"
-    cite += "\tauthor = {" + f"{generate_person_html(entry.persons['author'], make_bold=False, add_links=False, connection=' and ')}" + "}, \n"
+    cite += "\tauthor = {" + f"{generate_person_html(entry.persons['author'], make_bold=False, add_links=False, connection=' and ', indicate_equal=False)}" + "}, \n"
     for entr in ['title', 'booktitle', 'year']:
         cite += f"\t{entr} = " + "{" + f"{entry.fields[entr]}" + "}, \n"
     cite += """}</pre></code>"""
