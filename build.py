@@ -3,7 +3,17 @@ from pybtex.database.input import bibtex
 def get_personal_data():
     name = ["Thomas", "Hummel"]
     bio_text = f"""
-                <p>Under construction...</p>
+                <p>I am a PhD candidate in the <a href="https://www.eml-unitue.de" target="_blank">Explainable Machine Learning</a> group and the <a href="https://imprs.is.mpg.de" target="_blank">International Max-Planck Research School for Intelligent Systems (IMPRS-IS)</a> under the supervision of <a href="https://www.eml-unitue.de/people/zeynep-akata" target="_blank">Prof. Zeynep Akata</a>.</p>
+                <p>I have received my master's degree in Intelligent Adaptive Systems from the University of Hamburg in 2019 and my bachelor's degree in Bioprocess Informatics from the Weihenstephan-Triesdorf University of Applied Sciences in 2015.</p>
+                <p>My primary research interests are in multi-modal learning and video understanding.</p>
+                <p>
+                    <a href="mailto:mail@hummelth.de" style="margin-right: 5px"><i class="far fa-envelope-open fa-lg"></i> Mail</a>
+                    <a href="https://twitter.com/hummelth_" target="_blank" style="margin-right: 5px"><i class="fab fa-twitter fa-lg"></i> Twitter</a>
+                    <a href="https://scholar.google.com/citations?user=sUz6qxwAAAAJ&hl=en" target="_blank" style="margin-right: 5px"><i class="fa-solid fa-book"></i> Scholar</a>
+                    <a href="https://github.com/hummelth" target="_blank" style="margin-right: 5px"><i class="fab fa-github fa-lg"></i> Github</a>
+                    <a href="https://www.linkedin.com/in/hummelth/" target="_blank" style="margin-right: 5px"><i class="fab fa-linkedin fa-lg"></i> LinkedIn</a>
+                </p>
+
     """
     footer = """
             <div class="col-sm-12" style="">
